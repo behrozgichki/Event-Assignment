@@ -99,3 +99,21 @@ detectForm.addEventListener("submit" , function (event) {
 }
   alert ("Form submitted sucessfuly")
 })
+// Q11
+const country = document.querySelector("#countries")
+const city = document.querySelector("#city")
+const data = {
+pakistan : ["Lahore" , "Quetta" , "Islamabad"],
+india : ["Delhi" , "Hyderabad" , "Mumbai"],
+japan : ["Tokyo" , "Kawasaki" , "Sapporo"],
+america : ["New York" , "Los Angles" , "Chicago"]
+};
+country.addEventListener("change" , function () {
+   city.innerHTML = "<option>Select City</option>";
+  let selectedCountry = country.value
+if (selectedCountry && data[selectedCountry]) {
+  data[selectedCountry].forEach(function(cityName) {
+    city.innerHTML += `<option value= "${cityName}">${cityName}</option>`;
+  });
+}
+});

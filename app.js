@@ -1,8 +1,14 @@
 // Q1
 const btnColor = document.querySelector("#btnColor")
 btnColor.addEventListener("click" , function () {
-  document.body.style.backgroundColor = "lightblue";
+  document.body.style.backgroundColor = getRandomColor()
 })
+function getRandomColor(){
+  const r = Math.floor(Math.random() * 256)
+  const g = Math.floor(Math.random() * 256)
+  const b = Math.floor(Math.random() * 256)
+  return `rgb(${r}, ${g}, ${b})`
+}
 // Q2
 const darkMode = document.querySelector("#darkMode")
 const lightMode = document.querySelector("#lightMode")
@@ -65,10 +71,31 @@ userPass.addEventListener("input" , function () {
 const form = document.querySelector(".form")
 const useName = document.querySelector("#name")
 const email = document.querySelector("#email")
-const pass = document.querySelector("#password")
 
 form.addEventListener("submit" , function (event) {
   event.preventDefault()
-   alert(`Name: ${useName.value}\nEmail: ${email.value}\nPassword: ${pass.value}`);
+   alert(`Name: ${useName.value}\nEmail: ${email.value} `);
   
+})
+// Q9
+const upperCase = document.querySelector("#upperCase")
+const result = document.querySelector("#result")
+upperCase.addEventListener("input" , function () {
+  result.innerText = upperCase.value.toUpperCase()
+})
+// Q10
+const bannedWords = ["spam" , "test"]
+const detectForm = document.querySelector("#detectForm")
+const message = document.querySelector("#message")
+
+detectForm.addEventListener("submit" , function (event) {
+  const userText = message.value
+  for(let word of bannedWords){
+  if(userText.includes(word)){
+    event.preventDefault();
+    alert("Forbidden word detected" + word);
+    return
+  }
+}
+  alert ("Form submitted sucessfuly")
 })

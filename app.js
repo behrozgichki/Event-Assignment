@@ -117,3 +117,71 @@ if (selectedCountry && data[selectedCountry]) {
   });
 }
 });
+// Q12
+const validateField = document.querySelector("#validateField")
+const nameField = document.querySelector("#nameField")
+const emailField = document.querySelector("#emailField")
+
+const nameError = document.querySelector("#nameError")
+const emailError = document.querySelector("#emailError")
+validateField.addEventListener("submit" , function (event) {
+  let isValid = true;
+
+  nameError.innerText = "";
+  emailError.innerText = "";
+
+  if (nameField.value === "") {
+    nameError.innerText = "Name is required"
+    isValid = false;
+  }
+  if(!emailField.value.includes("@") || !emailField.value.includes(".") ){
+    emailError.innerText = "Enter a valid email"
+    isValid = false;
+  }
+  if (!isValid) {
+    event.preventDefault()
+  }else{
+    alert("Form submitted sucessfully")
+  }
+})
+// Q13
+const passwordField = document.querySelector("#passwordField")
+const eyeIcon = document.querySelector("#eyeIcon")
+
+eyeIcon.addEventListener("click" , function () {
+  if(passwordField.type === "password"){
+    passwordField.type = "text"
+    eyeIcon.textContent = "click to hide"
+  }else{
+    passwordField.type = "password"
+    eyeIcon.textContent = "👁️"
+  }
+})
+// Q14
+const colorPicker = document.querySelector("#colorPicker")
+const previewBox = document.querySelector("#previewBox")
+
+colorPicker.addEventListener("input" , function () {
+  previewBox.style.backgroundColor = colorPicker.value
+})
+// Q15
+const checkBox = document.querySelector("#checkBox")
+const mySubmit = document.querySelector("#mySubmit")
+
+checkBox.addEventListener("change" , function () {
+  if (checkBox.checked) {
+    mySubmit.disabled = false;
+  }else{
+    mySubmit.disabled = true
+  }
+})
+// Q16
+const img = document.querySelector("#img")
+img.addEventListener("mouseover", function () {
+  img.src = "hand-showing-thumbs-up_23-2148775884.avif"
+  img.width = 200;
+})
+img.addEventListener("mouseout" , function () {
+  img.src ="hand-showing-thumbs-up_23-2148775884.avif"
+  img.width = 100;
+})

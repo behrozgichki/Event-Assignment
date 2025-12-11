@@ -185,3 +185,52 @@ img.addEventListener("mouseout" , function () {
   img.src ="hand-showing-thumbs-up_23-2148775884.avif"
   img.width = 100;
 })
+// Q17
+const btn = document.querySelector("#backToTop")
+window.addEventListener("scroll" , function () {
+  if (window.scrollY >= 300) {
+    btn.style.display = "block"
+  }else {
+    btn.style.display = "none"
+  }
+})
+btn.addEventListener("click" , function () {
+  window.scrollTo(0 , 0)
+})
+// Q18
+const nameArea = document.querySelector("#name")
+const emailArea = document.querySelector("#email")
+
+nameArea.addEventListener("input" , function () {
+  localStorage.setItem("name" , nameArea.value)
+})
+emailArea.addEventListener("input" , function () {
+  localStorage.setItem("email" , emailArea.value)
+})
+nameArea.value = localStorage.getItem("name") || "";
+emailArea.value = localStorage.getItem("email") || "";
+// Q19
+const modal = document.querySelector("#modal")
+const modalBox = document.querySelector("#modalBox")
+const openBtn = document.querySelector("#openBtn")
+openBtn.addEventListener("click" , function () {
+  modal.style.display = "block";
+})
+modal.addEventListener ("click" , function (event) {
+  if (event.target === modal) {
+    modal.style.display = "none"
+  }
+})
+// Q20
+const output = document.querySelector("#output");
+
+document.addEventListener("keydown", function (event) {
+  const key = event.key;
+  const skip = ["Shift", "Control", "Alt", "Meta", "Tab"];
+
+  if (skip.includes(key)) {
+    return; 
+  }
+
+  output.textContent += key + " ";
+});
